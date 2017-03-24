@@ -1,6 +1,6 @@
 function Stopwatch(elem) {
-    
-    var time = 0; 
+
+    var time = 0;
     var interval;
     var offset;
     var laps = [];
@@ -8,7 +8,7 @@ function Stopwatch(elem) {
     function update() {
         if (this.isOn) {
             time += delta();
-        }      
+        }
         //console.log(timeFormatter(time));
         var formTime = timeFormatter(time);
         elem.textContent = formTime;
@@ -20,7 +20,7 @@ function Stopwatch(elem) {
         offset = now;
         return timePassend;
     };
-    
+
     function timeFormatter(timeInMilliseconds) {
         var time = new Date(timeInMilliseconds);
         var minutes = time.getMinutes().toString();
@@ -37,30 +37,30 @@ function Stopwatch(elem) {
             milliseconds = '0' + milliseconds;
         }
 
-        return minutes + ' : ' + seconds + ' . ' + milliseconds; 
+        return minutes + ' : ' + seconds + ' . ' + milliseconds;
 
     };
 
     this.isOn = false;
-    
-    this.start = function(){
-        if(!this.isOn){
+
+    this.start = function() {
+        if (!this.isOn) {
             interval = setInterval(update.bind(this), 10);
-            offset= Date.now();
+            offset = Date.now();
             this.isOn = true;
         }
     };
 
     this.stop = function() {
-        if(this.isOn){
+        if (this.isOn) {
             clearInterval(interval);
             interval = null;
             this.isOn = false;
         }
     };
-    
+
     this.reset = function() {
-        if (!this.isOn){
+        if (!this.isOn) {
             time = 0;
             update();
         }
@@ -69,13 +69,13 @@ function Stopwatch(elem) {
     this.newLap = function() {
         var lap = timeFormatter(time);
         laps.push(lap);
-      
+
         //console.log(laps)
 
     };
 
     this.getLastLap = function() {
-        
-        return laps[laps.length -1];
+
+        return laps[laps.length - 1];
     };
 }

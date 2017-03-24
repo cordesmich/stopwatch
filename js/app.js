@@ -18,23 +18,23 @@ toggleBtn.addEventListener("click", function() {
 
 resetBtn.addEventListener("click", function() {
     watch.reset();
-    
+
 });
 
-newLap.addEventListener("click", function(){
-   
-   if (watch.isOn) {
-    watch.newLap();
+newLap.addEventListener("click", function() {
 
-    var text = watch.getLastLap();
-    var row = "<tr>" + "<td>" + text + " </td> </tr>";
+    if (watch.isOn) {
+        watch.newLap();
 
-    document.getElementById("tbLaps").getElementsByTagName("tbody")[0].innerHTML += row;
-   }
+        var text = watch.getLastLap();
+        var row = "<tr>" + "<td>" + text + " </td> </tr>";
 
-} );
+        document.getElementById("tbLaps").getElementsByTagName("tbody")[0].innerHTML += row;
+    }
 
-delLaps.addEventListener("click", function () {
+});
+
+delLaps.addEventListener("click", function() {
 
     document.getElementById("tbLaps").getElementsByTagName("tbody")[0].innerHTML = "<tr><th>Laps:</th></tr>"
 
